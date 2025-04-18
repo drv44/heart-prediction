@@ -1,85 +1,3 @@
-// // async function handleSubmit() {
-// //     const features = [
-// //         parseFloat(document.getElementById('age').value),
-// //         parseFloat(document.getElementById('gender').value),
-// //         parseFloat(document.getElementById('chestPainType').value),
-// //         parseFloat(document.getElementById('bloodPressure').value),
-// //         parseFloat(document.getElementById('cholesterol').value),
-// //         parseFloat(document.getElementById('fbs').value),
-// //         parseFloat(document.getElementById('restecg').value),
-// //         parseFloat(document.getElementById('thalach').value),
-// //         parseFloat(document.getElementById('exang').value),
-// //         parseFloat(document.getElementById('oldpeak').value),
-// //         parseFloat(document.getElementById('slope').value),
-// //         parseFloat(document.getElementById('ca').value),
-// //         parseFloat(document.getElementById('thal').value)
-// //     ];
-
-// //     try {
-// //         const response = await fetch('http://127.0.0.1:5000/predict', {
-// //             method: 'POST',
-// //             headers: {
-// //                 'Content-Type': 'application/json',
-// //             },
-// //             body: JSON.stringify({ features })
-// //         });
-
-// //         if (!response.ok) {
-// //             throw new Error('Network response was not ok');
-// //         }
-
-// //         const data = await response.json();
-// //         document.getElementById('result').innerText = `Predicted Risk: ${data.risk}`;
-// //     } catch (error) {
-// //         console.error('Error:', error);
-// //         document.getElementById('result').innerText = 'An error occurred while predicting the risk.';
-// //     }
-// // }
-
-// async function handleSubmit() {
-//     const features = [
-//         parseFloat(document.getElementById('age').value),
-//         parseFloat(document.getElementById('gender').value),
-//         parseFloat(document.getElementById('chestPainType').value),
-//         parseFloat(document.getElementById('bloodPressure').value),
-//         parseFloat(document.getElementById('cholesterol').value),
-//         parseFloat(document.getElementById('fbs').value),
-//         parseFloat(document.getElementById('restecg').value),
-//         parseFloat(document.getElementById('thalach').value),
-//         parseFloat(document.getElementById('exang').value),
-//         parseFloat(document.getElementById('oldpeak').value),
-//         parseFloat(document.getElementById('slope').value),
-//         parseFloat(document.getElementById('ca').value),
-//         parseFloat(document.getElementById('thal').value)
-//     ];
-
-//     try {
-//         const response = await fetch('http://127.0.0.1:5000/predict', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify({ features })
-//         });
-
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok');
-//         }
-
-//         const data = await response.json();
-        
-//         // Store the prediction result in localStorage
-//         localStorage.setItem('risk', data.risk);
-        
-//         // Redirect to result page
-//         window.location.href = 'result.html';
-//     } catch (error) {
-//         console.error('Error:', error);
-//         alert('An error occurred while predicting the risk.');
-//     }
-// }
-
-
 async function handleSubmit() {
     const features = [
         parseFloat(document.getElementById('age').value),
@@ -112,13 +30,16 @@ async function handleSubmit() {
             }
         }, 400);
 
-        const response = await fetch('http://127.0.0.1:5000/predict', {
-            method: 'POST',
+        const response = await fetch(
+          "https://heart-prediction-9jed.onrender.com",
+          {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify({ features })
-        });
+            body: JSON.stringify({ features }),
+          }
+        );
 
         if (!response.ok) {
             throw new Error('Network response was not ok');
