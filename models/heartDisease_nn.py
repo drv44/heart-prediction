@@ -4,12 +4,17 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+
+import inspect
+from inspect import FullArgSpec
+inspect.ArgSpec = FullArgSpec
+
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 
 # Load the dataset (e.g., UCI Heart Disease Dataset)
-data = pd.read_csv('C:/Users/drv/Downloads/heart.csv')
+data = pd.read_csv('data/heart.csv')
 
 # Check for missing values and handle them
 imputer = SimpleImputer(strategy="mean")
@@ -84,4 +89,4 @@ print(f"Precision: {precision}, Recall: {recall}, F1 Score: {f1}, ROC-AUC: {roc_
 # model.save('C:/Users/drv/Desktop/ML Project/heart_disease_predictor.h5')
 from tensorflow import keras
 #keras.saving.save_model(model, 'heart_disease_predictor.keras')
-model.save('nn.keras')
+model.save('models/nn.keras')
